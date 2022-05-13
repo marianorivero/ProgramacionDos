@@ -51,4 +51,9 @@ function traer() {
     });
 }
 
+function reset () {
+  let div = document.getElementById("div")
+  div.textContent = `Nombre:`
+}
+
 
