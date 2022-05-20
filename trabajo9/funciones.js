@@ -1,11 +1,20 @@
+function initializingMap() // call this method before you initialize your map.
+{
+var container = L.DomUtil.get('map');
+if(container != null){
+container._leaflet_id = null;
+}
+}
+
 function traer() {
     let div = document.getElementById("div");
 
+  
     fetch('https://randomuser.me/api')
     .then(res=>res.json())
     .then(data=>{
-
         if (data.results[0].gender=="female" && data.results[0].dob.age>19 && data.results[0].dob.age<41) {
+
             div.innerHTML = `
             Nombre: ${data.results[0].name.first} <br>
             Apellido: ${data.results[0].name.last} <br>
@@ -14,18 +23,28 @@ function traer() {
             Latitud: ${data.results[0].location.coordinates.latitude}<br>
             Longitud: ${data.results[0].location.coordinates.longitude}<br><br>
             <img src="${data.results[0].picture.large}" alt="Error"><br>
-            `
+            `;
 
+            var latitud = data.results[0].location.coordinates.latitude
+            var longitud= data.results[0].location.coordinates.longitude
 
-            var map = L.map('map').setView([data.results[0].location.coordinates.latitude, data.results[0].location.coordinates.longitude], 13);
+            //Uso Leaflet
 
-            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            initializingMap()
+            var map = L.map('map')
+            map.setView([latitud, longitud], 13);
+            
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 maxZoom: 18
             }).addTo(map);
-  
+            
+            L.control.scale().addTo(map);
+            L.marker([latitud, longitud], {draggable: true}).addTo(map);
+
         } else {
             div.innerHTML = "No existe el usuario"
+
         }
     })
 }
