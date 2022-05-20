@@ -1,9 +1,8 @@
-function initializingMap() // call this method before you initialize your map.
-{
-var container = L.DomUtil.get('map');
-if(container != null){
-container._leaflet_id = null;
-}
+function inicializar(){
+    var container = L.DomUtil.get('map');
+    if(container != null){
+        container._leaflet_id = null;
+    }
 }
 
 function traer() {
@@ -30,7 +29,7 @@ function traer() {
 
             //Uso Leaflet
 
-            initializingMap()
+            inicializar()
             var map = L.map('map')
             map.setView([latitud, longitud], 13);
             
@@ -43,8 +42,14 @@ function traer() {
             L.marker([latitud, longitud], {draggable: true}).addTo(map);
 
         } else {
-            div.innerHTML = "No existe el usuario"
-
+            div.innerHTML = `
+            Nombre:<br>
+            Apellido:<br>
+            Sexo:<br>
+            Edad:<br>
+            Latitud:<br>
+            Longitud:<br><br>
+            `
         }
     })
 }
