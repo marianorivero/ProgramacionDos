@@ -71,12 +71,12 @@ function buscar() {
     
         if(datos.valor>=100){
             //si el valor es mayor o igual a 100 hacer un descuento del 20%
-            descuento = datos.valor*veinte
+            descuento = Math.ceil(datos.valor*veinte)
         }
 
         if(datos.editorial=="La Flor"){
             //si la editorial es "la flor" se hace un descuento del 5%
-            descuento = (datos.valor*cinco)+descuento   
+            descuento = (Math.ceil((datos.valor*cinco)))+descuento   
         }
 
         let precioFinal = datos.valor-descuento
