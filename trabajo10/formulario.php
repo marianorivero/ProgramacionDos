@@ -6,7 +6,8 @@ $fechaNacimiento=$_POST['date'];
 $sexo=$_POST["sexo"];
 //validacion de que DNI sea un numero
 if (is_numeric($_POST["dni"])) {
-    $dni= $_POST["dni"]; }
+    $dni= $_POST["dni"]; 
+}
 
 
 //Declaro el arreglo colores
