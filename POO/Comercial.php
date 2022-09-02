@@ -8,6 +8,8 @@
             $this->comision = $comision;
         }
         
+
+        
         public function plus(){
             define('PLUS2',300);
             

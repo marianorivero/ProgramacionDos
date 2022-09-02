@@ -10,21 +10,27 @@
 
 
     <form action="main.php" method="POST" id="form">
-        Nombre: <input type="text" name="nombre"><br><br>
-        Apellido: <input type="text" name="apellido"><br><br>
-        Edad: <input type="number" name="edad" id="edad"><br><br>
-        Salario: <input type="number" name="salario" id="salario"><br><br>
+        Nombre: <input type="text" name="nombre" required><br><br>
+
+        Apellido: <input type="text" name="apellido" required><br><br>
+
+        Edad: <input type="number" name="edad" id="edad" required><br><br>
+
+        Salario: <input type="number" name="salario" id="salario" required><br><br>
+        
         Puesto: 
         <select name="puesto" id="puesto"></select><br><br>
-        <div id="div"></div>
+
+        <div id="div">
+            Zona: <input type="text" name="x" require><br><br>
+        </div>
 
         <input type="submit" value="Enviar">
     </form>
 
     <!--
-    hacer una interfaz donde se agreguen los datos solicitados (new Comercial('Gabriel','Jesus',50,1000);)
-    poner un select que contenga dos opciones (repartido o comercial) que dependiendo lo que se seleccione introducir
-    zona o comision
+    hacer una interfaz donde se agreguen los datos solicitados
+    poner un select que contenga dos opciones (repartido o comercial) que dependiendo lo que se seleccione introducir zona o comision
     -->
     <script src="app.js"></script>
 </body>

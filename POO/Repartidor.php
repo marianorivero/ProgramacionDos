@@ -8,6 +8,8 @@
             $this->zona = $zona;
         }
           
+
+        
         public function plus(){
             define('PLUS',300);
 
