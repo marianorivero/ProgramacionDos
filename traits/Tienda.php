@@ -17,7 +17,7 @@ class Tienda {
             Producto: {$this->strProducto} <br>
             Cantidad: {$this->intCantidad}<br>
             Precio: {$this->fltPrecio}<br>
-            Total: {$this->fltTotal}<br> <br>
+            Total: {$this->fltTotal}<br><br>
         ";
         return $infoCarrito;
     }
