@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form method="post" id="form" name="form" action="main.php">
+        Nombre: <input type="text" name="nombre" id="nombre" required><br><br>
+        Apellido: <input type="text" name="apellido" id="apellido" required><br><br>
+        DNI: <input type="number" name="dni" id="dni" required> <br><br>
+
+        Tipo: 
+        <select name="select" id="tipoDinamico">
+        </select> <br><br>
+        <!--Aca se muestra en arancel-->
+        <div id='inputArancel'>
+            Arancel: <input type="number" name="arancel" value=500 readonly="readonly"><br><br>
+        </div>
+
+
+        Fecha de nacimiento:
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento"><br><br>
+
+
+        <input type="submit" value="Enviar"><br><br>
+    </form>
+
+
+    <script src="app.js"></script>
+    
+</body>
+</html>
