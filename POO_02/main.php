@@ -1,67 +1,38 @@
 <?php
-include_once("Alumno.php");
-include_once("Docente.php");
-include_once("edad.php");
-
+require_once("Alumno.php");
+require_once("Docente.php");
 
 $tipoPersona= $_POST["tipoPersona"];
 $nombre= ucwords($_POST["nombre"]);
 $apellido=ucwords($_POST["apellido"]);
 $dni= $_POST["dni"]; 
 $arancel=$_POST["arancel"];
-$fechaNacimiento=$_POST["fechaNacimiento"];
-
-
-//validar cumpleaños
-$fechaActual = date("d-m");
-$fechaCumpleaños = (substr($fechaNacimiento,-2))."-".(substr($fechaNacimiento,5,-3));
-
-
-
-//edad.php
-$edad = calcularEdad($fechaNacimiento);
+$fechaNacimiento= new DateTime($_POST["fechaNacimiento"]);
 
 
 switch ($tipoPersona) {
     case 'Alumno':
-
-        $persona = new Alumno ($nombre,$apellido,$fechaNacimiento,$dni,$arancel,$tipoPersona);
-
-        //valido el cumpleaños
-        if ($fechaCumpleaños==$fechaActual) {
-            //su es cumpleaños no paga
-            $arancel=0;
-        }elseif ($edad<=25) {
-            //descuento 20%
-            $arancel = $arancel-($arancel * 0.2);
-        }
-
-        echo($persona->info());
-        echo("<b>Arancel Total:</b> $ {$arancel}"."<br>");
-        echo("<b>Edad:</b> ".$edad);
+        $persona = new Alumno ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
+        $persona->descuento();
         break;
 
     case 'Docente':
-
-        $persona = new Docente ($nombre,$apellido,$fechaNacimiento,$dni,$arancel,$tipoPersona);
-
-        //valido el cumpleaños
-        if ($edad>=40) {
-            //descuento del 10%
-            $arancel = $arancel-($arancel * 0.1);
-        }
-
-        //si es su cumpleaños paga el doble
-        if ($fechaCumpleaños==$fechaActual) {
-            $arancel=$arancel*2;
-        }
-        
-        echo($persona->info());
-        echo("<b>Arancel Total:</b> $ {$arancel}"."<br>");
-        echo("<b>Edad:</b> ".$edad);
-     break;
+        $persona = new Docente ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
+        $persona->descuento();
+        break;
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Hacer una pantalla donde se ingresen; nombre, apellido, dni, tipo(alumno o docente, si es

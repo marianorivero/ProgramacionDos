@@ -1,8 +1,6 @@
 const inputArancel = document.getElementById("inputArancel")
 const tipoPersona = document.getElementById("tipoPersona")
 
-
-
 //Select dinamico
 const TIPO =["Alumno","Docente"];
 TIPO.forEach(item => {

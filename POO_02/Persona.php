@@ -8,7 +8,7 @@ class Persona{
     private $arancel;
     private $tipoPersona;
 
-    public function __construct(string $nombre, string $apellido, $fechaNacimiento, int $dni, int $arancel,$tipoPersona){
+    public function __construct(string $nombre, string $apellido, $fechaNacimiento,$arancel, int $dni,$tipoPersona){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->dni = $dni;
@@ -41,7 +41,8 @@ class Persona{
     public function getTipoPersona(){
         return $this->tipoPersona;
     }
-    public function setArancel(){
+    
+    public function setArancel($arancel){
         $this->arancel = $arancel;
     }
 
@@ -65,19 +66,16 @@ class Persona{
         $this->tipoPersona= $tipoPersona;
     }
 
-    public function info(){
+    public function getInfo(){
         $mostrar="
             <b>Nombre completo:</b> {$this->nombre} {$this->apellido}<br>
             <b>DNI:</b> {$this->dni}<br>
             <b>Tipo:</b> {$this->tipoPersona} <br>
-            <b>Fecha de nacimiento:</b> {$this->fechaNacimiento}<br>
-            <b>Arancel Original:</b> $ {$this->arancel}<br>
+            <b>Fecha de nacimiento:</b> {$this->fechaNacimiento->format("Y-m-d")}<br>
+            <b>Arancel Total:</b> $ {$this->arancel}<br>
         ";
         return $mostrar;
     }
-
-
-
 }
 
 ?>

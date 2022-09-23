@@ -1,27 +1,14 @@
 <?php
 
-function calcularEdad($fechaNacimiento){ 
-  $diaNacimiento = substr($fechaNacimiento,-2);
-  $mesNacimiento = substr($fechaNacimiento,5,-3);
-  $anioNacimiento= substr($fechaNacimiento,0,4);
+trait Edad{
 
-  $diaActual= date("d");
-  $mesActual=date("m");
-  $anioActual=date("Y");
-
-  //si todavia no llego al dia de este mes
-  if ( ($mesNacimiento == $mesActual) && ($diaNacimiento > $diaActual) ) {
-    $anioActual=$anioActual-1; 
+  function calcularEdad($fechaNacimiento){
+    $fechaActual = new DateTime(date('y-m-d'));
+    $edadActual = $fechaNacimiento->diff($fechaActual);
+    
+    return $edadActual->format("%y");
   }
-  
-  //si todavia no llega el mes
-  if ($mesNacimiento > $mesActual) {
-     $anioActual=$anioActual-1;
-  }
-  
-  $edadActual= $anioActual - $anioNacimiento;
 
-  return $edadActual;
 }
 
 ?>
