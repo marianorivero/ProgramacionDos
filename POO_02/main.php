@@ -13,14 +13,15 @@ $fechaNacimiento= new DateTime($_POST["fechaNacimiento"]);
 switch ($tipoPersona) {
     case 'Alumno':
         $persona = new Alumno ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
-        $persona->descuento();
         break;
 
     case 'Docente':
         $persona = new Docente ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
-        $persona->descuento();
         break;
 }
+
+$persona->descuento();
+
 ?>
 
 
