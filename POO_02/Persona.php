@@ -8,7 +8,7 @@ class Persona{
     private $arancel;
     private $tipoPersona;
 
-    public function __construct(string $nombre, string $apellido, $fechaNacimiento,$arancel, int $dni,$tipoPersona){
+    public function __construct(string $nombre, string $apellido, $arancel, int $dni, $tipoPersona, $fechaNacimiento){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->dni = $dni;

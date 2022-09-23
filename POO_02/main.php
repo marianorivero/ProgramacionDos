@@ -1,26 +1,22 @@
 <?php
 require_once("Alumno.php");
 require_once("Docente.php");
+define("TIPOS", ["Alumno","Docente"]);
 
-$tipoPersona= $_POST["tipoPersona"];
-$nombre= ucwords($_POST["nombre"]);
-$apellido=ucwords($_POST["apellido"]);
-$dni= $_POST["dni"]; 
-$arancel=$_POST["arancel"];
+define("TIPOPERSONA", $_POST["tipoPersona"]);
+define("NOMBRE",ucwords($_POST["nombre"]));
+define("APELLIDO", ucwords($_POST["apellido"]));
+define("DNI",$_POST["dni"]);
+define("ARANCEL", $_POST["arancel"]);
 $fechaNacimiento= new DateTime($_POST["fechaNacimiento"]);
 
-
-switch ($tipoPersona) {
-    case 'Alumno':
-        $persona = new Alumno ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
+foreach (TIPOS as &$tipo) {
+    if ($tipo == TIPOPERSONA) {
+        $persona = new $tipo (NOMBRE,APELLIDO, ARANCEL, DNI, TIPOPERSONA, $fechaNacimiento);
+        $persona->descuento();
         break;
-
-    case 'Docente':
-        $persona = new Docente ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
-        break;
+    }
 }
-
-$persona->descuento();
 
 ?>
 
@@ -45,3 +41,14 @@ Si es docente y mayor o igual 40 años tiene un 10% de descuento el arancel.
 
 si es el cumple del alumno el arancel es $0.
 si es el cumple del docente PAGA EL DOBLE. -->
+
+
+<!-- // switch ($tipoPersona) {
+//     case 'Alumno':
+//         $persona = new Alumno ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
+//         break;
+
+//     case 'Docente':
+//         $persona = new Docente ($nombre,$apellido,$fechaNacimiento,$arancel,$dni,$tipoPersona);
+//         break;
+// } -->
