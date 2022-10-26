@@ -7,13 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="main.php" method="POST" id="form">
+    <form method="POST" id="form">
         ID:
         <input type="number" id="numeroId" name="numeroId"><br><br>
         <button type="submit">OBTENER</button>
     </form>
-    <br><br><hr>
+    <br><br><hr><br>
+
+    <div id="formulario">
+        <form>
+            ID: <input type="text">
+            Nombre: <input type="text">
+            Especie: <input type="text">
+            Estado: <input type="text">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <br><hr>
+
     <div id="mostrar"></div>
+
 
     <script src="app.js"></script>
 </body>
